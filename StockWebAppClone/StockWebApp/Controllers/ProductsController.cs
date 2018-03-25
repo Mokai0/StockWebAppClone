@@ -35,8 +35,34 @@ namespace StockWebApp.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            var products = db.Products.Include(p => p.Brand).Include(p => p.Category);
-            return View(products.ToList());
+            using (Context context = GetContext())
+            {
+                var listOfProducts = context.Products
+                            .Include(p => p.Brand)
+                            .Include(p => p.Category)
+                            .OrderBy(p => p.Brand.Name)
+                            .ThenBy(p => p.Category.Ref)
+                            .ThenBy(p => p.ProductName)
+                            .ToList();
+                return View(listOfProducts); 
+            }
+            //var products = db.Products.Include(p => p.Brand).Include(p => p.Category);
+            //return View(products.ToList());
+        }
+
+        public ActionResult IndexNames()
+        {
+            using (Context context = GetContext())
+            {
+                var listOfProducts = context.Products
+                    .Include(p => p.Brand)
+                    .Include(p => p.Category)
+                    .OrderBy(p => p.ProductName)
+                    .ToList();
+                return View(listOfProducts);
+            }
+                //var NameList = db.Products.Include(p => p.Brand).Include(p => p.Category).OrderBy(p => p.ProductName);
+                //return View(NameList.ToList());
         }
 
         // GET: Products/Create
@@ -44,6 +70,8 @@ namespace StockWebApp.Controllers
         {
             ViewBag.BrandId = new SelectList(db.Brands, "Id", "Name");
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Info");
+            //This won't work - I need something else to prevent duplicates.
+            //ViewBag.Product.ProductName = new SelectList(db.Products, "Id", "ProductName");
             return View();
         }
 
