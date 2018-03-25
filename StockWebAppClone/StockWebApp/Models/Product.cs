@@ -14,6 +14,7 @@ namespace StockWebApp.Models
         [Required, StringLength(100)]
         public string ProductName { get; set; }
         public decimal Quantity { get; set; }
+        [DisplayFormat(ConvertEmptyStringToNull = true, NullDisplayText = "N/A")]
         public DateTime? ExpirationDate { get; set; }
 
         public Brand Brand { get; set; }

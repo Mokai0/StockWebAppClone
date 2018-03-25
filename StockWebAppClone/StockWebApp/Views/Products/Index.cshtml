@@ -7,7 +7,7 @@
 <h2>Here is what you currently have in stock: </h2>
 
 <p>
-    <button>@Html.ActionLink("Add a product", "Create")</button>
+    @Html.ActionLink("Add a product", "Create", "Products", new { @class = "btn btn-primary" })
 </p>
 <table class="table">
     <tr>
@@ -46,9 +46,8 @@
             @Html.DisplayFor(modelItem => item.ExpirationDate)
         </td>
         <td>
-            @Html.ActionLink("Update", "Edit", new { id=item.Id }) |
-            @*@Html.ActionLink("Details", "Details", new { id=item.Id }) |*@
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Update", "Edit", new { id=item.Id }, new { @class = "btn btn-success btn-sm" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new { @class = "btn btn-danger btn-sm" })
         </td>
     </tr>
 }

@@ -6,19 +6,21 @@
 
 <h2 class="text-danger">Are you sure you want to discontinue this item?</h2>
 <div>
-    <h4>Product</h4>
+    <h4 class="text-warning">Here is what you selected:</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Brand.Name)
+            @Html.LabelFor(model => model.BrandId, "Brand name:")
+            @*@Html.DisplayNameFor(model => model.Brand.Name)*@
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Brand.Name)
+            @Html.LabelFor(model => model.Brand.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Category.Info)
+            @Html.LabelFor(model => model.Category.Info, "Located in the:")
         </dt>
 
         <dd>
