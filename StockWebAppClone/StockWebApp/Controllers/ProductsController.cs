@@ -14,6 +14,23 @@ namespace StockWebApp.Controllers
     public class ProductsController : Controller
     {
         private Context db = new Context();
+        static Context GetContext()
+        {
+            var context = new Context();
+            return context;
+        }
+
+        public static Product GetProducts(int selected)
+        {
+            using (Context context = GetContext())
+            {
+                return context.Products
+                    .Include(p => p.Brand)
+                    .Include(p => p.Category)
+                    .Where(p => p.Id == selected)
+                    .SingleOrDefault();
+            }
+        }
 
         // GET: Products
         public ActionResult Index()
@@ -85,23 +102,36 @@ namespace StockWebApp.Controllers
         }
 
         // GET: Products/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
+            using (Context context = GetContext())
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                //if (id == null)
+                //{
+                //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                //}
+                var product = GetProducts(id);
+                if (product == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(product);
             }
-            var products = db.Products.Include(p => p.Brand).Include(p => p.Category);
-            Product product = db.Products.Find(id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
-            //else
+            //if (id == null)
             //{
-            //    //set retreived product.Id = products somehow - current problem is that returned values don't 'INCLUDE' the Brand and Category models' values.
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             //}
-            return View(product);
+            //var products = db.Products.Include(p => p.Brand).Include(p => p.Category);
+            //Product product = db.Products.Find(id);
+            //if (product == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            ////else
+            ////{
+            ////    //set retreived product.Id = products somehow - current problem is that returned values don't 'INCLUDE' the Brand and Category models' values.
+            ////}
+            //return View(product);
         }
 
         // POST: Products/Delete/5
