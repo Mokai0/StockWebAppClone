@@ -46,8 +46,7 @@
             @Html.DisplayFor(modelItem => item.ExpirationDate)
         </td>
         <td>
-            @Html.ActionLink("Update", "Edit", new { id=item.Id }, new { @class = "btn btn-success btn-sm" }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new { @class = "btn btn-danger btn-sm" })
+            @Html.ActionLink("Update", "Edit", new { id=item.Id }, new { @class = "btn btn-success btn-sm" })            @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new { @class = "btn btn-danger btn-sm" })
         </td>
     </tr>
 }

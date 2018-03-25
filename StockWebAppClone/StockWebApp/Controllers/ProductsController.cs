@@ -48,8 +48,6 @@ namespace StockWebApp.Controllers
         }
 
         // POST: Products/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,BrandId,CategoryId,ProductName,Quantity,ExpirationDate,MyProperty")] Product product)
@@ -84,8 +82,6 @@ namespace StockWebApp.Controllers
         }
 
         // POST: Products/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,BrandId,CategoryId,ProductName,Quantity,ExpirationDate,MyProperty")] Product product)
@@ -101,11 +97,12 @@ namespace StockWebApp.Controllers
             return View(product);
         }
 
-        // GET: Products/Delete/5
+        // GET: Products/Delete
         public ActionResult Delete(int id)
         {
             using (Context context = GetContext())
             {
+
                 //if (id == null)
                 //{
                 //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -117,24 +114,9 @@ namespace StockWebApp.Controllers
                 }
                 return View(product);
             }
-            //if (id == null)
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            //}
-            //var products = db.Products.Include(p => p.Brand).Include(p => p.Category);
-            //Product product = db.Products.Find(id);
-            //if (product == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            ////else
-            ////{
-            ////    //set retreived product.Id = products somehow - current problem is that returned values don't 'INCLUDE' the Brand and Category models' values.
-            ////}
-            //return View(product);
         }
 
-        // POST: Products/Delete/5
+        // POST: Products/Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
