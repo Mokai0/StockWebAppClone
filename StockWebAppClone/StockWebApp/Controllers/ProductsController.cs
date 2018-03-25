@@ -91,11 +91,16 @@ namespace StockWebApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            var products = db.Products.Include(p => p.Brand).Include(p => p.Category);
             Product product = db.Products.Find(id);
             if (product == null)
             {
                 return HttpNotFound();
             }
+            //else
+            //{
+            //    //set retreived product.Id = products somehow - current problem is that returned values don't 'INCLUDE' the Brand and Category models' values.
+            //}
             return View(product);
         }
 
