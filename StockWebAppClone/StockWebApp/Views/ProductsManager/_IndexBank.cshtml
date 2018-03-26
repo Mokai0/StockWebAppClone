@@ -1,0 +1,51 @@
+﻿@model IEnumerable<StockWebApp.Models.Product>
+
+<p>
+    @Html.ActionLink("Add a product", "Create", "ProductsManager", new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Brand", "IndexBrands", "ProductsManager", new { @class = "btn btn-info" })
+        </th>
+        <th>
+            @Html.ActionLink("Category", "IndexCategories", "ProductsManager", new { @class = "btn btn-info" })
+        </th>
+        <th>
+            @Html.ActionLink("Product Name", "IndexNames", "ProductsManager", new { @class = "btn btn-info" })
+        </th>
+        <th>
+            @Html.ActionLink("Quantity", "IndexQuantities", "ProductsManager", new { @class = "btn btn-info" })
+        </th>
+        <th>
+            @Html.ActionLink("Expiration Date", "IndexExpirations", "ProductsManager", new { @class = "btn btn-info" })
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.Info)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpirationDate)
+            </td>
+            <td>
+                @Html.ActionLink("Update", "Edit", new { id = item.Id }, new { @class = "btn btn-success btn-sm" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+            </td>
+        </tr>
+    }
+
+</table>
+

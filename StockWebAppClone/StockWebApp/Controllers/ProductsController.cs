@@ -118,6 +118,7 @@ namespace StockWebApp.Controllers
         // GET: Products/Create
         public ActionResult Create()
         {
+
             ViewBag.BrandId = new SelectList(db.Brands, "Id", "Name");
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Info");
             //This won't work - I need something else to prevent duplicates.
@@ -142,7 +143,7 @@ namespace StockWebApp.Controllers
             return View(product);
         }
 
-        // GET: Products/Edit/5
+        // GET: Products/Edit
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -159,7 +160,7 @@ namespace StockWebApp.Controllers
             return View(product);
         }
 
-        // POST: Products/Edit/5
+        // POST: Products/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,BrandId,CategoryId,ProductName,Quantity,ExpirationDate,MyProperty")] Product product)

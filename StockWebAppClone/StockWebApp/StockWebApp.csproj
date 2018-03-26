@@ -155,6 +155,10 @@
     <Content Include="Views\Products\IndexBrands.cshtml" />
     <Content Include="Views\Products\IndexCategories.cshtml" />
     <Content Include="Views\Products\IndexExpirations.cshtml" />
+    <Content Include="Views\ProductsManager\Index.cshtml" />
+    <Content Include="Views\ProductsManager\_IndexBank.cshtml" />
+    <Content Include="Views\ProductsManager\IndexBrands.cshtml" />
+    <Content Include="Views\Products\_IndexBank.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -164,7 +168,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\ProductsManager\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
