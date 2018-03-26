@@ -16,10 +16,9 @@ namespace StockWebApp.Data
 
         public Context()
         {
-            Database.SetInitializer(new
+            Database.SetInitializer(new DatabaseInitializer());
             //DropCreateDatabaseAlways<Context>());
             //Will now be using the custom made initializer
-            DatabaseInitializer());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

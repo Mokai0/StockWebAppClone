@@ -13,6 +13,7 @@ namespace StockWebApp.Controllers
 {
     public class ProductsController : Controller
     {
+        //Both of these capture instances of the Context class but considering the circumstance I'm more comfortable with using one vs the other in certain situations
         private Context db = new Context();
         static Context GetContext()
         {
@@ -20,6 +21,7 @@ namespace StockWebApp.Controllers
             return context;
         }
 
+        //Get: This will get a specific product based on it's Product.Id property
         public static Product GetProducts(int selected)
         {
             using (Context context = GetContext())
@@ -32,7 +34,7 @@ namespace StockWebApp.Controllers
             }
         }
 
-        // GET: Products
+        // Get: This will initiate a call to generate the "landing page" or "home page" of this app in an organized manner
         public ActionResult Index()
         {
             using (Context context = GetContext())
@@ -48,6 +50,7 @@ namespace StockWebApp.Controllers
             }
         }
 
+        //Get: This will reorganize the products displayed in the Index View by their respective Brand Names
         public ActionResult IndexBrands()
         {
             using (Context context = GetContext())
@@ -61,6 +64,7 @@ namespace StockWebApp.Controllers
             }
         }
 
+        //Get: This will reorganize the products displayed in the Index View by their respective Categories
         public ActionResult IndexCategories()
         {
             using (Context context = GetContext())
@@ -74,6 +78,7 @@ namespace StockWebApp.Controllers
             }
         }
 
+        //Get: This will reorganize the products displayed in the Index View by their respective Product Names
         public ActionResult IndexNames()
         {
             using (Context context = GetContext())
@@ -87,6 +92,7 @@ namespace StockWebApp.Controllers
             }
         }
 
+        //Get: This will reorganize the products displayed in the Index View by their respective Quantities in stock
         public ActionResult IndexQuantities()
         {
             using (Context context = GetContext())
@@ -100,6 +106,7 @@ namespace StockWebApp.Controllers
             }
         }
 
+        //Get: This will reorganize the products displayed in the Index View to only show the products with the ExpirationDate property and then organize them
         public ActionResult IndexExpirations()
         {
             using (Context context = GetContext())
@@ -115,10 +122,9 @@ namespace StockWebApp.Controllers
             }
         }
 
-        // GET: Products/Create
+        // Get: This will initiate a call to retrieve and render the Create View giving the user the opportunity to add a product to the database
         public ActionResult Create()
         {
-
             ViewBag.BrandId = new SelectList(db.Brands, "Id", "Name");
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Info");
             //This won't work - I need something else to prevent duplicates.
@@ -126,7 +132,7 @@ namespace StockWebApp.Controllers
             return View();
         }
 
-        // POST: Products/Create
+        // Post: This will send the information obtained from the user to create a product in the database
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,BrandId,CategoryId,ProductName,Quantity,ExpirationDate,MyProperty")] Product product)
@@ -143,7 +149,7 @@ namespace StockWebApp.Controllers
             return View(product);
         }
 
-        // GET: Products/Edit
+        // Get: This will initiate a call to retrieve and render the Edit View allowing the user the chance to update the information on the product that they have selected - which was retrieved by the product's Product.Id property
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -160,7 +166,7 @@ namespace StockWebApp.Controllers
             return View(product);
         }
 
-        // POST: Products/Edit
+        // Post: This will send the updated information to the database modifying the existing item
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,BrandId,CategoryId,ProductName,Quantity,ExpirationDate,MyProperty")] Product product)
@@ -176,16 +182,11 @@ namespace StockWebApp.Controllers
             return View(product);
         }
 
-        // GET: Products/Delete
+        // Get: This will initiate a call to retrieve and render the Delete View populating it with the information available about the item, which was selected by it's Product.Id property.
         public ActionResult Delete(int id)
         {
             using (Context context = GetContext())
             {
-
-                //if (id == null)
-                //{
-                //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                //}
                 var product = GetProducts(id);
                 if (product == null)
                 {
@@ -195,7 +196,7 @@ namespace StockWebApp.Controllers
             }
         }
 
-        // POST: Products/Delete
+        // Post: After recieving validation from the user a call will be sent to the database to delete the selected product and all of its attatched values
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
