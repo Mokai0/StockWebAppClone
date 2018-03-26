@@ -17,7 +17,7 @@
         <th>
             @Html.ActionLink("Quantity", "IndexQuantities", "ProductsManager", new { @class = "btn btn-info" })
         </th>
-        <th>
+        <th class="visible-lg visible-md">
             @Html.ActionLink("Expiration Date", "IndexExpirations", "ProductsManager", new { @class = "btn btn-info" })
         </th>
     </tr>
@@ -37,7 +37,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Quantity)
             </td>
-            <td>
+            <td class="visible-lg visible-md">
                 @Html.DisplayFor(modelItem => item.ExpirationDate)
             </td>
             <td>
