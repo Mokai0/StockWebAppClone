@@ -46,8 +46,32 @@ namespace StockWebApp.Controllers
                             .ToList();
                 return View(listOfProducts); 
             }
-            //var products = db.Products.Include(p => p.Brand).Include(p => p.Category);
-            //return View(products.ToList());
+        }
+
+        public ActionResult IndexBrands()
+        {
+            using (Context context = GetContext())
+            {
+                var listOfProducts = context.Products
+                    .Include(p => p.Brand)
+                    .Include(p => p.Category)
+                    .OrderBy(p => p.Brand.Name)
+                    .ToList();
+                return View(listOfProducts);
+            }
+        }
+
+        public ActionResult IndexCategories()
+        {
+            using (Context context = GetContext())
+            {
+                var listOfProducts = context.Products
+                    .Include(p => p.Brand)
+                    .Include(p => p.Category)
+                    .OrderBy(p => p.Category.Info)
+                    .ToList();
+                return View(listOfProducts);
+            }
         }
 
         public ActionResult IndexNames()
@@ -61,8 +85,34 @@ namespace StockWebApp.Controllers
                     .ToList();
                 return View(listOfProducts);
             }
-                //var NameList = db.Products.Include(p => p.Brand).Include(p => p.Category).OrderBy(p => p.ProductName);
-                //return View(NameList.ToList());
+        }
+
+        public ActionResult IndexQuantities()
+        {
+            using (Context context = GetContext())
+            {
+                var listOfProducts = context.Products
+                    .Include(p => p.Brand)
+                    .Include(p => p.Category)
+                    .OrderBy(p => p.Quantity)
+                    .ToList();
+                return View(listOfProducts);
+            }
+        }
+
+        public ActionResult IndexExpirations()
+        {
+            using (Context context = GetContext())
+            {
+                var listOfProducts = context.Products
+                    .Include(p => p.Brand)
+                    .Include(p => p.Category)
+                    .Where(p => p.ExpirationDate != null)
+                    .OrderBy(p => p.ExpirationDate)
+                    .ThenBy(p => p.Quantity)
+                    .ToList();
+                return View(listOfProducts);
+            }
         }
 
         // GET: Products/Create

@@ -131,7 +131,6 @@
     <Compile Include="Controllers\ProductsManagerController.cs" />
     <Compile Include="Data\Context.cs" />
     <Compile Include="Data\DatabaseInitializer.cs" />
-    <Compile Include="Data\Repository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -153,6 +152,9 @@
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Products\IndexNames.cshtml" />
     <Content Include="Views\Products\IndexQuantities.cshtml" />
+    <Content Include="Views\Products\IndexBrands.cshtml" />
+    <Content Include="Views\Products\IndexCategories.cshtml" />
+    <Content Include="Views\Products\IndexExpirations.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

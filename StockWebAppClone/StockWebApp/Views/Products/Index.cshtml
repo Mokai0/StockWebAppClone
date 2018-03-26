@@ -12,19 +12,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Brand.Name)
+            @Html.ActionLink("Brand", "IndexBrands", "Products", new { @class = "btn btn-info" })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Category.Info)
+            @Html.ActionLink("Category", "IndexCategories", "Products", new { @class = "btn btn-info" })
         </th>
         <th>
             @Html.ActionLink("Product Name", "IndexNames", "Products", new { @class = "btn btn-info" })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Quantity)
+            @Html.ActionLink("Quantity", "IndexQuantities", "Products", new { @class = "btn btn-info" })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ExpirationDate)
+            @Html.ActionLink("Expiration Date", "IndexExpirations", "Products", new { @class = "btn btn-info" })
         </th>
     </tr>
 
