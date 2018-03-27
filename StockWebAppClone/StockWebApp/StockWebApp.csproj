@@ -128,7 +128,6 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
-    <Compile Include="Controllers\ProductsManagerController.cs" />
     <Compile Include="Data\Context.cs" />
     <Compile Include="Data\DatabaseInitializer.cs" />
     <Compile Include="Global.asax.cs">
@@ -155,9 +154,6 @@
     <Content Include="Views\Products\IndexBrands.cshtml" />
     <Content Include="Views\Products\IndexCategories.cshtml" />
     <Content Include="Views\Products\IndexExpirations.cshtml" />
-    <Content Include="Views\ProductsManager\Index.cshtml" />
-    <Content Include="Views\ProductsManager\_IndexBank.cshtml" />
-    <Content Include="Views\ProductsManager\IndexBrands.cshtml" />
     <Content Include="Views\Products\_IndexBank.cshtml" />
     <Content Include="Views\Products\_ProductInfo.cshtml" />
     <None Include="Web.Debug.config">
