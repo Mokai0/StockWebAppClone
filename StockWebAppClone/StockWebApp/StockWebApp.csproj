@@ -159,6 +159,7 @@
     <Content Include="Views\ProductsManager\_IndexBank.cshtml" />
     <Content Include="Views\ProductsManager\IndexBrands.cshtml" />
     <Content Include="Views\Products\_IndexBank.cshtml" />
+    <Content Include="Views\Products\_ProductInfo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
