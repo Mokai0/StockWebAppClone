@@ -11,7 +11,8 @@ namespace StockWebApp.Models
         public int Id { get; set; }
         public int BrandId { get; set; }
         public int CategoryId { get; set; }
-        [Required, StringLength(100)]
+        [Required, StringLength(100),
+            RegularExpression(@"^[a-zA-Z''-'\s]{1,40}$", ErrorMessage = "Characters are not allowed.")]
         public string ProductName { get; set; }
         public decimal Quantity { get; set; }
         [DisplayFormat(ConvertEmptyStringToNull = true, NullDisplayText = "N/A")]
