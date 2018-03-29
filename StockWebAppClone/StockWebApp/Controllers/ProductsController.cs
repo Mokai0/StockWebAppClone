@@ -137,7 +137,17 @@ namespace StockWebApp.Controllers
             if (ModelState.IsValid)
             {
                 db.Products.Add(product);
-                db.SaveChanges();
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (System.Exception)
+                {
+                    ModelState.AddModelError(null, "That product already exists");
+                    ViewBag.BrandId = new SelectList(db.Brands, "Id", "Name", product.BrandId);
+                    ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Info", product.CategoryId);
+                    return View(product);
+                }
                 return RedirectToAction("Index");
             }
 

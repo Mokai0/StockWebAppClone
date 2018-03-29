@@ -31,6 +31,11 @@ namespace StockWebApp.Data
                 .Property(p => p.Quantity)
                 .HasPrecision(5, 2);
             //This restricts the precision and scale of the 'Quantity' so that it reads ###.##
+
+            modelBuilder.Entity<Product>()
+                .HasIndex(p => new { p.ProductName, p.BrandId, p.CategoryId });
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
