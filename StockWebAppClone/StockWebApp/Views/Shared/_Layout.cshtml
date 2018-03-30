@@ -12,17 +12,9 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                @*<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>*@
+                @*This is a 'Home' button and will take you back to the landing page of the app (Index.cshtml)*@
                 @Html.ActionLink("Stock Web Clone", "Index", "", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            @*<div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
-            </div>*@
         </div>
     </div>
 
@@ -30,7 +22,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - This is a test clone of my Inventory Manager App</p>
+            <p>&copy; @DateTime.Now.Year - Thankyou for using Stock Web Clone - your one stop for inventory management!</p>
         </footer>
     </div>
 

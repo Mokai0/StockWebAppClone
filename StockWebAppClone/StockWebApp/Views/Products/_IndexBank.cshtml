@@ -1,9 +1,11 @@
 ﻿@model IEnumerable<StockWebApp.Models.Product>
 
 <p>
+    @* Sends you to the item creation page *@
     @Html.ActionLink("Add a product", "Create", "Products", new { @class = "btn btn-primary" })
 </p>
 <table class="table">
+    @* Table heads *@
     <tr>
         <th>
             @Html.ActionLink("Brand", "IndexBrands", "Products", new { @class = "btn btn-info" })
@@ -17,11 +19,13 @@
         <th>
             @Html.ActionLink("Quantity", "IndexQuantities", "Products", new { @class = "btn btn-info" })
         </th>
+        @* This column will become hidden on small (sm) and xtra small (xs) screened devices *@
         <th class="visible-lg visible-md">
             @Html.ActionLink("Expiration Date", "IndexExpirations", "Products", new { @class = "btn btn-info" })
         </th>
     </tr>
 
+    @* Table columns *@
     @foreach (var item in Model)
     {
         <tr>
@@ -37,11 +41,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Quantity)
             </td>
+            @* This column will become hidden on small (sm) and xtra small (xs) screened devices *@
             <td class="visible-lg visible-md">
                 @Html.DisplayFor(modelItem => item.ExpirationDate)
             </td>
             <td>
+                @* Sends you to the Edit page to update the information available on the item *@
                 @Html.ActionLink("Update", "Edit", new { id = item.Id }, new { @class = "btn btn-success btn-sm" })
+                @* Sends you to the Delete page to confirm whether you'd like to discontinue this item *@
                 @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
             </td>
         </tr>

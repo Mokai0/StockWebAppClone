@@ -11,9 +11,11 @@ namespace StockWebApp.Models
         public int Id { get; set; }
         public int BrandId { get; set; }
         public int CategoryId { get; set; }
+        //No way a product should have a name longer than 100 characters
         [Required, StringLength(100)]
         public string ProductName { get; set; }
         public decimal Quantity { get; set; }
+        //This will prevent the app from containing a bunch of empty space in place of missing Expiration Date values
         [DisplayFormat(ConvertEmptyStringToNull = true, NullDisplayText = "N/A")]
         public DateTime? ExpirationDate { get; set; }
 

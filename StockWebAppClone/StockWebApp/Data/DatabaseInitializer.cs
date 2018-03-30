@@ -7,6 +7,7 @@ using System.Web;
 
 namespace StockWebApp.Data
 {
+    //This will seed the test data into the database.
     internal class DatabaseInitializer
     : DropCreateDatabaseIfModelChanges<Context>
     //: DropCreateDatabaseAlways<Context>

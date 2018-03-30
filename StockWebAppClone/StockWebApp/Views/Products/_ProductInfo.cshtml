@@ -3,6 +3,7 @@
 <div class="form-group">
     @Html.LabelFor(model => model.BrandId, "Pick a Brand:", htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-10">
+        @* This creates a dropdown list of the Brands available *@
         @Html.DropDownList("BrandId", null, htmlAttributes: new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.BrandId, "", new { @class = "text-danger" })
     </div>
@@ -11,13 +12,14 @@
 <div class="form-group">
     @Html.LabelFor(model => model.CategoryId, "Pick a Category:", htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-10">
+        @* This creates a dropdown list of the Categories available *@
         @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
     </div>
 </div>
 
 <div class="form-group">
-    @Html.LabelFor(model => model.ProductName, "What is the name of the Product:", htmlAttributes: new { @class = "control-label col-md-2" })
+    @Html.LabelFor(model => model.ProductName, "What is the name of the Product: (100 characters Max)", htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-10">
         @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })
         @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
@@ -25,7 +27,8 @@
 </div>
 
 <div class="form-group">
-    @Html.LabelFor(model => model.Quantity, "How many cases do you have:", htmlAttributes: new { @class = "control-label col-md-2" })
+    @* Remember the quantity field can only handle ###.## so remind the user of the maximum values *@
+    @Html.LabelFor(model => model.Quantity, "How many cases do you have? (Maximum 999.99)", htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-10">
         @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
         @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
