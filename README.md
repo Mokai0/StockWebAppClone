@@ -13,5 +13,5 @@ This is a web app that is intended to be used as an inventory manager, helping t
 Simply launch the project inside of visual studio then press F5 to begin.
 
 #Please Note:
--Due to the nature of this app and it's current state the responiveness is a bit hindered in that there is no 'hamburger' menu icon that will appear on smaller devices. Therefore to accomedate to smaller screens and prove responiveness concepts further when viewed on a smaller device or when the view itself is shrunk (by resizing the window it's viewed in on a computer) the Expiration Date column will become hidden.
--Also please keep in mind that as of right now duplicate items may be created into the database, this is a known issue and will be fixed in a later patch.
+- Due to the nature of this app and it's current state the responiveness is a bit hindered in that there is no 'hamburger' menu icon that will appear on smaller devices. Therefore to accomedate to smaller screens and prove responiveness concepts further when viewed on a smaller device or when the view itself is shrunk (by resizing the window it's viewed in on a computer) the Expiration Date column will become hidden.
+- Also please keep in mind that as of right now duplicate items may be created into the database, this is a known issue and will be fixed in a later patch.
