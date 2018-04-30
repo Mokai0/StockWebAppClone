@@ -11,17 +11,11 @@
 	- furthermore this my be checked against the Product Id in a key/value pair
 	https://blogs.msdn.microsoft.com/ericlippert/2011/02/28/guidelines-and-rules-for-gethashcode/
 
-```seq
-User->App: item info
-Note right of App: input is standardized
-App-->Db: does this item\n already exist?
-Note left of Db: Nope
-Db->>User: Good to go!
-Note left of Db: Sure does
-Db-->App: This item exists\n current stock:
-Note left of App: Current item info
-App->User: Would you like\n to add to this item?
-User->App: Corrected info
-App-->Db: info persisted
-User->>User: returned to\n staging screen
-```
+
+User -> item info -> App
+App: standardizes info
+App -> standardized info -> Db
+Db: checks for existing data
+Db = !match ? All clear! : [Data is sent back]
+App -> item already exists, add quantity -> User
+etc...
